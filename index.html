@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>manshu</title>
+    
+</head>
+<body>
+    <div class="main div">
+        <div class="center div">
+            <h1>Welcome To Typing Speed Chack Web</h1>
+            <h4>Click a start button and cnotinue a Game</h4>
+          
+            <h2 id="msg"></h2>
+            <textarea id="mywords" cols="100" rows="10" placeholder="Come on Dude Try ur Typing Speed..."></textarea>
+ <button id="btn" class="mainbtn">Start </button>
+        </div>
+    </div>
+    <style>  
+        *{
+            padding: 0 ; margin: 0; box-sizing: border-box;
+        }
+        .main div{
+            text-align: center; 
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background-color:  #0892D0;
+        }
+        .center div{
+           text-align: center;
+            position: center;
+            top: -50%;
+            left: -50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+        }
+        h1 {text-transform: capitalize;
+           text-align: center;
+            margin-bottom: 50px;
+            color: #ecf0f1;
+            text-shadow: 1px 2px 3px yellow;
+       
+       }
+        h2 {text-align: center;}
+        textarea{
+         
+            background-color: #444;
+            border-radius: 10px 10px 0 0;
+           border: 20px solid #34445e;
+           color: #fff;
+        }
+        .mainbtn{
+            text-align: center;
+           padding: 10px 20px;
+           border-radius: 20px;
+           box-sizing: bottom;
+           border: 5px solid #11c211af;
+           background-color:  #7DF9FF;
+           font-size: 2rem;
+       }
+       </style>
+       <script>  
+       var name = prompt("enter your Name");
+       const setOfWords = ["hope you having fun this game"," if you want the score"];
+       const msg = document.getElementById('msg');
+       const typewords = document.getElementById('mywords');
+       const btn = document.getElementById('btn');
+       let startTime , endTime;
+
+     const  PlayGame = () => {
+           let = randomNumber = Math.floor(Math.random()*setOfWords.length);
+           msg.innerText = setOfWords[randomNumber];
+           let date = new Date();
+           startTime = date.getTime();
+           btn.innerText = "Done";
+       }
+     const  endPlay = () => {
+         let date = new Date();
+         endTime = date.getTime();
+         let totalTime = ((endTime - startTime)/1000);
+         console.log(totalTime);
+
+         let totatStr = typewords.value;
+         let wordCount = wordCounter(totatStr);
+
+         let speed = Math.round(( wordCount /totalTime) * 60);
+
+         let finalMsg = name +" you typed total at " +speed+ " words per minutes" ;
+         msg.innerText = finalMsg;
+     }
+      const wordCounter = (Str) => {
+          let response = Str.split(" ").length;
+          console.log(response);
+          return response;
+      }
+     
+         
+        btn.addEventListener('click', function(){
+          
+            if(this.innerText == 'Start'){
+                typewords.disabled = false;
+                PlayGame();
+            }else if(this.innerText == "Done"){
+                typewords.disabled = true;
+                btn.innerText = "Start";
+                endPlay();
+            }
+        })
+    
+    
+    
+    </script>
+
+ 
+</body>
+</html>
+
